@@ -8,8 +8,8 @@ overall.
 
 ## Styleguides
 
-* [Javascript](https://github.com/Addepar/styleguides/blob/master/engineering/javascript.md)
-* [Ember](https://github.com/Addepar/styleguides/blob/master/engineering/ember.md)
+* [Javascript](https://github.com/Addepar/styleguides/blob/master/frontend/javascript.md)
+* [Ember](https://github.com/Addepar/styleguides/blob/master/frontend/ember.md)
 
 ## New Projects
 
