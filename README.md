@@ -8,8 +8,8 @@ overall.
 
 ## Styleguides
 
-* [Javascript](https://github.com/DockYard/styleguides/blob/master/engineering/javascript.md)
-* [Ember](https://github.com/DockYard/styleguides/blob/master/engineering/ember.md)
+* [Javascript](https://github.com/Addepar/styleguides/blob/master/engineering/javascript.md)
+* [Ember](https://github.com/Addepar/styleguides/blob/master/engineering/ember.md)
 
 ## New Projects
 

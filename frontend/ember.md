@@ -203,10 +203,8 @@ Within each section, the attributes should be ordered alphabetically.
 ```js
 // Good
 
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-
-const { computed } = Ember;
 
 const {
   Model,
@@ -230,10 +228,8 @@ export default Model.extend({
 
 // Bad
 
-import Ember from 'ember';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-
-const { computed } = Ember;
 
 const {
   Model,
