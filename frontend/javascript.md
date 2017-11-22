@@ -328,8 +328,7 @@ function foo() {
 
 ## Assignment
 
-+ Never use `var`. Prefer [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
-in general unless the value of a variable must change, in which case use [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let).
++ Never use `var`. Prefer [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) to declare a block scope local variable; use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) to declare a constant whose value can not be re-assigned in the global scope.
 
 ```javascript
 // good
@@ -344,7 +343,7 @@ function doStuff() {
 
 // bad
 var a = [1, 2, 3];
-let b = [1, 2, 3]; // isn't reassigned
+let b = [1, 2, 3];
 ```
 
 + Note that `const` refers to a **constant reference**, not a constant value.
@@ -447,8 +446,8 @@ function bar() {
 }
 ```
 
-+ Use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-  when assigning data from arrays or objects.
++ Use [destructuring
+  assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) when assigning data from arrays or objects.
 
 ```javascript
 let foo = ['one', 'two', 'three'];
