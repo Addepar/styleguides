@@ -85,7 +85,6 @@ rules:
     -
       style: long
   hex-notation: 1
-  indentation: 2
   leading-zero:
     - 1
     -
