@@ -1,20 +1,19 @@
 {
   "name": "@addepar/eslint-config",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Addepar eslint-config",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "eslint-plugin-node": "^6.0.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-
     "eslint-plugin-ember": "^5.0.1",
     "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-prefer-let": "^1.0.1"
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prefer-let": "^1.0.1",
+    "eslint-plugin-prettier": "^2.6.0"
   },
   "author": "",
   "license": "MIT",
