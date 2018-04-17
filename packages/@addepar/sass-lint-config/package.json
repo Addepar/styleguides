@@ -1,0 +1,10 @@
+{
+  "name": "@addepar/sass-lint-config",
+  "version": "1.0.0",
+  "description": "Addepar sass-lint configuration",
+  "main": "index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "@addepar:registry": "https://registry.npmjs.org/"
+  }
+}

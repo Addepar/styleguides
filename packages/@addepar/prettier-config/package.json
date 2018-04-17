@@ -1,0 +1,10 @@
+{
+  "name": "@addepar/prettier-config",
+  "version": "1.0.0",
+  "description": "Addepar's Prettier config",
+  "main": "index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "@addepar:registry": "https://registry.npmjs.org/"
+  }
+}
