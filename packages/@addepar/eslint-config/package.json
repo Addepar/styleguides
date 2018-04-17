@@ -1,0 +1,25 @@
+{
+  "name": "@addepar/eslint-config",
+  "version": "3.0.1",
+  "description": "Addepar eslint-config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.0.0",
+    "eslint-plugin-brackets": "^0.1.0",
+    "eslint-plugin-class-property": "^1.0.6",
+    "eslint-plugin-ember": "^5.0.1",
+    "eslint-plugin-ember-best-practices": "^1.1.1",
+    "eslint-plugin-fat-arrow-same-line": "^0.1.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-prefer-let": "^1.0.1"
+  },
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "@addepar:registry": "https://registry.npmjs.org/"
+  }
+}

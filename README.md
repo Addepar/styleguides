@@ -13,34 +13,25 @@ overall.
 
 ## New Projects
 
-These rules are automatically enforced using linting tools such as ESLint and
-Sasslint.
+This repo includes packages that contain configs for the linting tools we use to
+enforce these standards. You can install them manually, or you can use one of our
+automated workflows to speed up the process.
 
-For frontend projects with you can add them by running:
+### Ember
 
-```
-  yarn add --dev @addepar/eslint-config
-  yarn add --dev @addepar/sass-lint-config
-```
+Install the Ember-Toolbox and it will bootstrap your app or addon with all of the
+frontend linting and formatting configurations:
 
-And adding the following config files:
-
-```javascript
-// .eslintrc.js
-module.exports = {
-  extends: '@addepar'
-};
-```
-
-```yaml
-# .sass-lint.yml
-options:
-  config-file: node_modules/@addepar/sass-lint-config/config.yml
+```bash
+  ember install @addepar/ember-toolbox
 ```
 
 ## Editor Integration
 
-Linting tools can be integrated into most editors to give you instant feedback as you
-type code. You can find out how to integrate with your editor of choice [here](http://eslint.org/docs/user-guide/integrations).
+Linting and formatting tools can be integrated with your editor to quickly update your
+code and give you feedback as you are typing. It's recommended that you install all of
+the editor integrations below for your editor of choice:
 
-
+* [ESLint](http://eslint.org/docs/user-guide/integrations)
+* SassLint ([Atom](https://atom.io/packages/linter-sass-lint))([VSCode](https://marketplace.visualstudio.com/items?itemName=glen-84.sass-lint))([Sublime](https://packagecontrol.io/packages/SublimeLinter-contrib-sass-lint))([vim](https://github.com/gcorne/vim-sass-lint))
+* [Prettier](https://prettier.io/docs/en/editors.html)
