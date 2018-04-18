@@ -4,13 +4,10 @@
 
 ### Grammar
 
-* [Block Statements](#block-statements)
+* [Basic Formatting](#basic-formatting)
 * [Conditional Statements](#conditional-statements)
-* [Commas](#commas)
-* [Semicolons](#semicolons)
 * [Comments](#comments)
 * [Assignment](#assignment)
-* [Whitespace](#whitespace)
 * [Naming conventions](#naming-conventions)
 
 ### Constructors
@@ -39,66 +36,16 @@
 
 * [General Performance](#general-performance)
 
-## Block Statements
+## Basic Formatting
 
-+ Use spaces before leading brace.
+We use [Prettier](https://prettier.io), an opinionated code formatter to,
+maintain basic code style standards, such as usage of semicolons, single quotes
+vs double quotes, indentation, and more. You can read the docs to understand the
+rationale and see the specific details of usage. We use a configuration with:
 
-```javascript
-// good
-function doStuff(foo) {
-  return foo;
-};
-
-// bad
-function doStuff(foo){
-  return foo;
-};
-```
-
-+ Opening curly brace (`{`) should be on the same line as the beginning of a
-statement or declaration.
-
-```javascript
-// good
-return fooBar(foo, (bars) => {
-  return bars.map((bar) => {
-    return bar * 2;
-  });
-});
-
-//bad
-return fooBar(foo, (bars) =>
-{
-  return bars.map((bar) =>
-  {
-    return bar * 2;
-  });
-});
-```
-
-+ Keep `else` and its accompanying braces on the same line.
-
-```javascript
-let bar;
-
-// good
-if (foo === 1) {
-  bar = 2;
-} else {
-  bar = '2';
-}
-
-// bad
-if (foo === 1) {
-  bar = 2;
-}
-else if (foo === 2) {
-  bar = 1;
-}
-else {
-  bar = 3;
-}
-```
+* Singlequotes preferred
+* Trailing commas inserted where allowed by ES5
+* A maximum line width of 100 characters
 
 ## Conditional Statements
 
@@ -159,7 +106,9 @@ if (foo === 'bar') {
 if (foo === 'bar') { return; }
 ```
 
-+ Avoid use of `switch` statements. It is too easy to make logic mistakes in the code and can increase the code complexity. The same logic can be managed better using [polymorphism](https://sourcemaking.com/refactoring/replace-conditional-with-polymorphism).
++ Avoid use of `switch` statements. It is too easy to make logic mistakes in the
+code and can increase the code complexity. The same logic can be managed better
+using [polymorphism](https://sourcemaking.com/refactoring/replace-conditional-with-polymorphism).
 
 ```javascript
 // bad
@@ -201,75 +150,6 @@ handler();
 // If the handlers use `this` you will have to manage the context. For example:
 handler.call(this);
 ```
-
-+ Put parens and statements of multiline conditionals on their own lines
-
-```javascript
-// good
-if (
-  someBool && someReallyLongVariableName > 10000000000000000000000000
-) {
-  // code
-}
-
-if (
-  (someBool && someOtherBool)
-  || (someThirdBool && yetAnotherBool)
-) {
-  // code
-}
-
-// bad
-if (someBool
-    && someOtherBool) {
-  // code
-}
-
-```
-
-## Commas
-
-+ Skip trailing commas.
-
-```javascript
-// good
-const foo = {
-  bar: [1, 2, 3],
-  baz: {
-    a: 'a'
-  }
-}
-
-// bad
-const foo = {
-  bar: [1, 2, 3],
-  baz: {
-    a: 'a',
-  },
-}
-```
-
-+ Skip leading commas.
-
-```javascript
-// good
-const potato = [
-  'potatoes',
-  'are',
-  'delicious'
-];
-
-// bad
-const potato = [
-  'potatoes'
-, 'are'
-, 'delicious'
-];
-```
-
-## Semicolons
-
-+ Use semicolons`;`
 
 ## Comments
 
@@ -324,11 +204,11 @@ function foo() {
 }
 ```
 
-+ Pad comments with a space.
-
 ## Assignment
 
-+ Never use `var`. Prefer [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) to declare a block scope local variable; use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) to declare a constant whose value can not be re-assigned in the global scope.
++ Never use `var`. Prefer [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+to declare a block scope local variable; use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+to declare a constant whose value can not be re-assigned in the global scope.
 
 ```javascript
 // good
@@ -337,13 +217,21 @@ let b = [4, 5, 6];
 
 function doStuff() {
   b = [1, 2, 3];
+  let c = [7, 8, 9];
 
-  return b;
+  return b.concat(c);
 }
 
 // bad
 var a = [1, 2, 3];
 let b = [1, 2, 3];
+
+function doStuff() {
+  b = [1, 2, 3];
+  const c = [7, 8, 9];
+
+  return b.concat(c);
+}
 ```
 
 + Note that `const` refers to a **constant reference**, not a constant value.
@@ -383,17 +271,6 @@ let arr = [1, 2, 3];
 const isTrue = true;
 ```
 
-+ Put all non-assigning declarations on one line.
-
-```javascript
-// good
-let a, b;
-
-// bad
-let a,
-b;
-```
-
 + Use a single `const` declaration for each assignment.
 
 ```javascript
@@ -405,49 +282,9 @@ const b = 2;
 const a = 1, b = 2;
 ```
 
-+ Declare variables at the top of their block scope.
-
-```javascript
-function mutate(thing) {
-  return new Promise((resolve) => {
-    resolve(thing);
-  });
-}
-
-// good
-function bar() {
-  const itemToPush = 'foo';
-  const coolList = [1, 2, 3, 4, 5, 6];
-  let updatedList = coolList.filter((item) => {
-    return (item % 2) === 0;
-  });
-
-  mutate(updatedList).then((list) => {
-    updatedList = list.push(itemToPush);
-  });
-
-  return updatedList;
-}
-
-// bad
-function bar() {
-  let updatedList = coolList.filter((item) => {
-    return (item % 2) === 0;
-  });
-
-  const coolList = [1, 2, 3, 4, 5, 6];
-
-  mutate(updatedList).then((list) => {
-    updatedList = list.push(result);
-  });
-
-  const result = 'foo';
-  return updatedList;
-}
-```
-
 + Use [destructuring
-  assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) when assigning data from arrays or objects.
+  assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+  when assigning data from arrays or objects.
 
 ```javascript
 let foo = ['one', 'two', 'three'];
@@ -467,70 +304,6 @@ let name = model.name;
 // good
 let { id, name } = model;
 ```
-
-## Whitespace
-
-+ Use soft tabs set to 2 spaces.
-
-```javascript
-// good
-function() {
-∙∙const name;
-}
-
-// bad
-function() {
-⇥const name;
-}
-```
-
-+ Place 1 space before a leading brace (`{`).
-
-```javascript
-// good
-obj.set('foo', {
-  foo: 'bar'
-});
-
-test('foo-bar', function() {
-});
-
-// bad
-obj.set('foo',{
-  foo: 'bar'
-});
-
-test('foo-bar', ()=>{
-});
-```
-
-+ No spaces before semicolons.
-
-```javascript
-// good
-const foo = {};
-
-// bad
-const foo = {} ;
-```
-
-+ Keep parentheses adjacent to the function name when declared or called.
-
-```javascript
-// good
-function foo(bar) {
-}
-
-foo(1);
-
-// bad
-function foo (bar) {
-}
-
-foo (1);
-```
-
-+ No trailing whitespaces.
 
 ## Naming Conventions
 
@@ -644,237 +417,6 @@ const doug = {};
 const doug = new Object();
 ```
 
-+ Pad single-line objects with white-space.
-
-```javascript
-// good
-const rob = { likes: 'ember' };
-
-// bad
-const rob = {hates: 'spiders'};
-```
-
-+ For multiline object declarations, brackets should be on their own line.
-Values may either be on a single line, or each on their own line.
-
-```javascript
-// good
-const foo = {
-  foo: 1, bar: 2, baz: 3
-};
-
-const bar = {
-  foo: 1,
-  bar: 2,
-  baz: 3
-};
-
-const baz = {
-  foo: [
-    1, 2, 3
-  ],
-
-  bar: {
-    prop1: true, prop2: false
-  },
-
-  baz() {
-    // code
-  }
-};
-
-// bad
-const foo = { foo: 1,
-  bar: 2, baz: 3 };
-
-const bar = {
-  foo: 1, bar: 2,
-  baz: 3
-};
-
-const baz = { foo: 1,
-              bar: 2,
-              baz: 3 };
-
-// scope becomes confusing
-const qux = { foo: 1, bar: 2, baz() {
-  //code
-}};
-```
-
-## Strings
-
-+ Prefer single quotes, and use double quotes to avoid escaping.
-
-```javascript
-// good:
-const foo = 'bar';
-const baz = "What's this?";
-
-// bad
-const foo = "bar";
-```
-
-+ When constructing strings with dynamic values, prefer template strings.
-
-```javascript
-const prefix = 'Hello';
-const suffix = 'and have a good day.';
-
-// good
-return `${prefix} world, ${suffix}`;
-
-// bad
-return prefix + ' world, ' + suffix;
-```
-
-## Arrays
-
-+ Use literal form for array creation (unless you know the exact length).
-
-```javascript
-// good
-const foo = [1, 2, 3];
-const bar = new Array(3);
-
-// bad
-const foo = new Array();
-const bar = new Array(1, 2, 3);
-```
-
-+ Use `new Array` if you know the exact length of the array and know that its
-length will not change.
-
-```javascript
-const foo = new Array(16);
-```
-
-+ For multiline array declarations, brackets should be on their own line unless the
-lines end/begin with a bracket. Values may either be on a single line, or each on
-their own line.
-
-```javascript
-// good
-const foo = [
-  1, 2, 3
-];
-
-const bar = [
-  1,
-  2,
-  3
-];
-
-const baz = [1, 2, {
-  prop: 3
-}];
-
-const qux = [{
-  prop: 1
-}, 2, 3];
-
-const quux = [{
-  prop: 1
-}, [
-  1, 2, 3
-]];
-
-cost quuz = [
-  {
-    prop: 1
-  },
-  [
-    1, 2, 3
-  ],
-  3
-];
-
-// bad
-const foo = [1
-  2, 3];
-
-const bar = [
-  1, 2,
-  3
-];
-
-const baz = [1,
-             2,
-             3];
-
-const qux = [{
-  prop: 1
-}, 2, 3, {
-  prop: 4
-}];
-
-```
-
-+ Use `push`/`unshift` to add an item to an array.
-
-```javascript
-const foo = [];
-const { length } = foo;
-
-// good
-foo.push('bar');
-
-// bad
-foo[length] = 'bar';
-```
-
-+ Use spread.
-
-```javascript
-// join 2 arrays
-const foo = [0, 1, 2];
-const bar = [3, 4, 5];
-
-foo.push(...bar);
-
-// avoid using `Function.prototype.apply`
-const values = [25, 50, 75, 100];
-
-// good
-const max = Math.max.apply(Math, values);
-
-// better
-const max = Math.max(...values);
-```
-
-+ Join single line array items with a space.
-
-```javascript
-// good
-const foo = ['a', 'b', 'c'];
-
-// bad
-const foo = ['a','b','c'];
-```
-
-+ Do not use spaces inside array brackets
-
-```javascript
-// good
-const foo = ['a', 'b', 'c'];
-
-// bad
-const foo = [ 'a', 'b', 'c' ];
-```
-
-+ Use array destructuring.
-
-```javascript
-const arr = [1, 2, 3, 4];
-
-// good
-const [head, ...tail] = arr;
-
-// bad
-const head = arr.shift();
-const tail = arr;
-```
-
 ## Properties
 
 + Use property value shorthand.
@@ -956,6 +498,87 @@ function foo(person) {
 }
 ```
 
+## Strings
+
++ When constructing strings with dynamic values, prefer template strings.
+
+```javascript
+const prefix = 'Hello';
+const suffix = 'and have a good day.';
+
+// good
+return `${prefix} world, ${suffix}`;
+
+// bad
+return prefix + ' world, ' + suffix;
+```
+
+## Arrays
+
++ Use literal form for array creation (unless you know the exact length).
+
+```javascript
+// good
+const foo = [1, 2, 3];
+const bar = new Array(3);
+
+// bad
+const foo = new Array();
+const bar = new Array(1, 2, 3);
+```
+
++ Use `new Array` if you know the exact length of the array and know that its
+length will not change.
+
+```javascript
+const foo = new Array(16);
+```
+
++ Use `push`/`unshift` to add an item to an array.
+
+```javascript
+const foo = [];
+const { length } = foo;
+
+// good
+foo.push('bar');
+
+// bad
+foo[length] = 'bar';
+```
+
++ Use spread
+
+```javascript
+// join 2 arrays
+const foo = [0, 1, 2];
+const bar = [3, 4, 5];
+
+foo.push(...bar);
+
+// avoid using `Function.prototype.apply`
+const values = [25, 50, 75, 100];
+
+// good
+const max = Math.max.apply(Math, values);
+
+// better
+const max = Math.max(...values);
+```
+
++ Use array destructuring.
+
+```javascript
+const arr = [1, 2, 3, 4];
+
+// good
+const [head, ...tail] = arr;
+
+// bad
+const head = arr.shift();
+const tail = arr;
+```
+
 ## Functions
 
 + Use object method shorthand.
@@ -1029,162 +652,6 @@ const foo = {
     });
   }
 };
-```
-
-+ Only use arrow function implicit returns when the statement is a single line,
-or when it is:
-  + An object declaration
-  + An array declaration
-  + A `new` instance of a class (`create` is allowed as well)
-  + A boolean statement (`===`, `>=`, `&&`, etc)
-  + A template
-
-  These statements would not make sense without the implicit return, so we know
-  that their values must be used somewhere. Single line statements are still allowed
-  for brevity.
-
-```javascript
-// good
-let foo = [1, 2, 3];
-
-foo.forEach((number) => console.log(number));
-
-const tripleArrays = foo.map((number) => [
-  number, number, number
-]);
-
-const isTwoOrThree = foo.map((number) =>
-  number === 2 || number === 3
-);
-
-const bars = foo.map((number) =>
-  new Bar({ number })
-);
-
-const bazs = foo.map((number) =>
-  Baz.create({ number })
-);
-
-// bad
-
-foo.forEach(() =>
-  console.log(number)
-);
-
-const bars = foo.map((number) =>
-  makeBar({ number }) // Could be returning a Bar, could be side-effecting - we'll never know!
-);
-```
-
-+ Always use parentheses around arguments.
-
-```javascript
-// good
-[1, 2, 3].map((x) => x * x);
-
-// bad
-[1, 2, 3].map(x => x * x);
-```
-
-+ For multiline function definitions, the parentheses and each parameter should be
-on its own line. The closing paren should not be indented, and parameters should be
-indented once.
-
-```javascript
-// good
-function foo(
-  bar,
-  baz,
-  qux
-) {
-  // code
-}
-
-// bad
-
-function foo(bar,
-             baz,
-             qux) {
-
-}
-
-function foo(bar, baz, qux,
-  quux, quuz) {
-
-}
-```
-
-+ For multiline function calls, parentheses should be on their own line unless the
-lines end/begin with a bracket. Arguments may either be on a single line, or each on
-their own line. The closing paren should not be indented, and the arguments should
-be indented once.
-
-```javascript
-// good
-
-foo(bar, baz, qux);
-
-foo(
-  bar, baz, qux
-);
-
-foo(bar, baz, () => {
-  // code
-});
-
-setTimeout(() => {
-  // code
-}, 1000);
-
-foo(bar, baz, () => {
-
-}, {
-  qux: 1
-}, quux, quuz);
-
-foo({
-  bar: 1
-}, [
-  baz
-]);
-
-foo(
-  bar,
-  baz,
-  {
-    qux: 1
-  },
-  [
-    quux
-  ],
-  function() {
-    // code
-  }
-);
-
-// bad
-
-foo(bar, baz
-    qux);
-
-foo(bar, {
-  baz: 1
-},
-qux);
-
-foo(
-  bar, function() {
-    //code
-  }
-);
-
-foo(bar, baz, function() {
-
-}, qux, {
-  quux: 1
-}, quuz, [
-  2, 3, 4
-]);
 ```
 
 ## Function Arguments

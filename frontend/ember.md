@@ -365,14 +365,16 @@ to resolve. An example of this would be models needed to fill a drop
 down in a form, you don't want to render this page without the options
 in the dropdown. A counter example would be comments on a page. The
 comments should be fetched along side the model, but should not block
-your page from loading if the required model is there.
+your page from loading if the required model is there. For more detailed
+information on when to load data in routes and when to load it somewhere else,
+see [this breakdown from Edward Faulkner](https://discuss.emberjs.com/t/readers-questions-is-it-bad-to-load-data-in-components/14521).
 
 ## ES Classes
 
 Now that ES Classes have solidified and features like decorators and properties
-have begun to be built out, Ember is beginning to move toward using them, and long
-run they will become the standard. We can begin using ES Classes now, with certain
-caveats.
+have begun to be built out, Ember is beginning to move toward using them, and
+long run they will become the standard. We can begin using ES Classes now, with
+certain caveats.
 
 NOTE: ES Classes are not truly usable without [decorators](https://github.com/tc39/proposal-decorators)
 which are currently stage 2 in TC39 and [class fields](https://github.com/tc39/proposal-class-fields)
@@ -429,14 +431,13 @@ export default class ExampleComponent extends Component {
 
 ### Style Notes
 
-+ Use the [ember-decorators](https://github.com/ember-decorators/ember-decorators) and
-[utility-decorators](https://github.com/ember-decorators/utility-decorators) decorator
-libraries
-+ Always specify a class name rather than using anonymous classes. This gives the
-prototype a name, which will allow us to identify instances, and also makes it easier
-to grep the codebase for classes.
-+ Use the `constructor` rather than init
-+ Assign default values in the `constructor`
++ Use the [ember-decorators](https://github.com/ember-decorators/ember-decorators)
+  library
++ Always specify a class name rather than using anonymous classes. This gives
+  the prototype a name, which will allow us to identify instances, and also
+  makes it easier to grep the codebase for classes.
++ Use the `constructor` rather than `init`
++ Assign default values in the `constructor` or using class fields
 
 ```javascript
 // before
@@ -453,26 +454,3 @@ export default class ExampleComponent extends Component {
   }
 }
 ```
-
-### With Ember 2.13+
-
-Classes can be used with modern Ember versions with the following caveats:
-
-+ Observers and event listeners will not work at all
-+ Merged/concatenated properties will not work by default
-  * There will be an `@className` decorator added to ember-decorators soon
-  to enable `classNameBindings`, and there is an `@action` decorator already
-
-### With Ember 1.11 - 2.12
-
-Classes can be used as reliably as far back as Ember 1.11 with the following caveats:
-
-+ The `constructor` is never called due to the double extend which was used
-for injections until 2.13, so `init` must be used instead. This also means
-that class fields will never have their default values assigned.
-  * The `property` decorator in `@addepar/ice-box` can be used to assign
-  class properties directly to the prototype of the class, emulating past
-  ember behavior. This should be made available in an `ember-decorators`
-  utility library soon as an `@proto` decorator.
-
-
