@@ -153,19 +153,10 @@ handler.call(this);
 
 ## Comments
 
-+ Use multiline comments with two leading asterisks for documentation.
++ Use multiline comments with two leading asterisks for documentation. Prefer
+  omitting leading asterisks per line, it's better for indentation.
 
 ```javascript
-// good
-/**
-  This is documentation for something just below.
-*/
-function isItLunchTimeYet(time) {
-  if (time) {
-    return 'Yes.';
-  }
-}
-
 // bad
 //
 // This is documentation for something just below.
@@ -175,10 +166,27 @@ function isItLunchTimeYet(time) {
     return 'Yes.';
   }
 }
-```
 
-+ Use [ESDoc](https://esdoc.org/) comments for documenting class, modules,
-  functions, and constants.
+// better
+/**
+ * This is documentation for something just below.
+ */
+function isItLunchTimeYet(time) {
+  if (time) {
+    return 'Yes.';
+  }
+}
+
+// best
+/**
+  This is documentation for something just below.
+*/
+function isItLunchTimeYet(time) {
+  if (time) {
+    return 'Yes.';
+  }
+}
+```
 
 + Use `//` for non-documenting comments (both single and multiline).
 
@@ -203,6 +211,122 @@ function foo() {
   console.log(newBar);
 }
 ```
+
++ Add a Todo when a decision is made which makes an uncomfortable or temporary
+tradeoff. Sometimes, while coding, we may need to make decisions which favor
+expediency over correctness/clearness/concision, etc. When one of these
+decisions is made, write a todo with your name and a description of how you
+would have done it, had you been able.
+
+```js
+// TODO(chris): This is a crappy hack, but I can't see a better way.
+// Revisit and refactor.
+```
+
++ Sometimes, you can anticipate a feature that will be available in a future
+release of a library or dependency. In this case, a note will be useful so
+that devs can improve the code in the future. Consider using an event tag
+instead of your name:
+
+```js
+// TODO(ember-3): Ember 3 has a feature that will make this better
+```
+
++ For standard Ember classes defined with the Ember object model, use YUIDoc
+doc comments to describe the class. We use
+to generate API docs, and it provides a somewhat [modified version of YUIDoc](https://github.com/ember-learn/ember-cli-addon-docs-yuidoc).
+The key differences are:
+  * No need to use `@module`
+  * Special tags added:
+    * `@accessor`
+    * `@argument`
+    * `@const`
+    * `@field`
+    * `@function`
+    * `@variable`
+
+```js
+/**
+  A foo class
+
+  @class Foo
+  @anArbitraryTag
+  @public
+*/
+export default class Foo {
+  /**
+    A field named foo
+
+    @field foo
+    @type number
+  */
+  foo = 123;
+
+  /**
+    An accessor named baz
+
+    @accessor baz
+    @type any
+    @set
+  */
+  get bar() {
+    return this._baz;
+  }
+
+  set bar(val) {
+    this._baz = val;
+  }
+
+  /**
+    A static async method named grault
+
+    @method grault
+    @static
+    @async
+  */
+  static async baz() {
+    // ...
+  }
+}
+```
+
++ For classes defined using [native class syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+use [ESDoc](https://esdoc.org/) comments to document them:
+
+```js
+/**
+  A foo class
+*/
+export default class Foo {
+  /**
+    A field named foo
+
+    @type number
+  */
+  foo = 123;
+
+  /**
+    An accessor named baz
+
+    @type any
+  */
+  get bar() {
+    return this._baz;
+  }
+
+  set bar(val) {
+    this._baz = val;
+  }
+
+  /**
+    A static async method named grault
+  */
+  static async baz() {
+    // ...
+  }
+}
+```
+
 
 ## Assignment
 
