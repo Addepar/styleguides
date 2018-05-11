@@ -66,6 +66,8 @@ module.exports = {
       'ember'
     ],
 
+    'no-use-before-define': ['error', { 'functions': false }],
+
     // Prettier plugin
     'prettier/prettier': 'error',
 
