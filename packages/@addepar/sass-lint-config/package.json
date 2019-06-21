@@ -4,6 +4,11 @@
   "description": "Addepar sass-lint configuration",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Addepar/styleguides.git",
+    "directory": "packages/@addepar/sass-lint-config"
+  },
   "publishConfig": {
     "@addepar:registry": "https://registry.npmjs.org/"
   }

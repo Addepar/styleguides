@@ -4,6 +4,11 @@
   "description": "Addepar's Prettier config",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Addepar/styleguides.git",
+    "directory": "packages/@addepar/prettier-config"
+  },
   "publishConfig": {
     "@addepar:registry": "https://registry.npmjs.org/"
   }
