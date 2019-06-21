@@ -16,6 +16,11 @@
     "eslint-plugin-prettier": "^2.6.0"
   },
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Addepar/styleguides.git",
+    "directory": "packages/@addepar/eslint-config"
+  },
   "license": "MIT",
   "publishConfig": {
     "@addepar:registry": "https://registry.npmjs.org/"
