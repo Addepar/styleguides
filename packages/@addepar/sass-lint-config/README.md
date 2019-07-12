@@ -1,23 +1,43 @@
 # @addepar/sass-lint-config
 
-This is the Sass Lint config used for Sass projects at Addepar.
+[List of available sass-lint rules](https://github.com/sasstools/sass-lint/tree/master/docs/rules)
 
-## Using the plugin
+## Setup
+Add this dependency to devDependencies in your project
 
-### Installation
+`yarn add --dev @addepar/sass-lint-config`
 
-Install the plugin as a dev dependency in your project.
-
-```bash
-yarn add --dev @addepar/sass-lint-config
+Then add a `.sass-lint.yml` file to the root of your project
+```
+options:
+  config-file: ./node_modules/@addepar/sass-lint-config/config.yml
+files:
+  include: '[your-project-css-path]/**/*.s+(a|c)ss'
 ```
 
-### Configuration
+## Run sass-lint in your project
+`./node_modules/sass-lint/bin/sass-lint.js -vq`
 
-Link to the sass-lint config in `.sass-lint.yml`
+## Disabling rules
 
-```yml
-# .sass-lint.yml
-options:
-  config-file: node_modules/@addepar/sass-lint-config/config.yml
+### Disable for whole file
+
+```
+// sass-lint:disable no-ids
+
+#root {
+  ...
+}
+```
+
+### Disable rule for single line
+
+`color: pink; // sass-lint:disable-line no-color-literals`
+
+### Disable rule for selector block
+```
+p {
+  // sass-lint:disable-block no-color-literals
+  color: pink;
+}
 ```

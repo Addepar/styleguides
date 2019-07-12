@@ -23,7 +23,6 @@ rules:
   single-line-per-selector: 2
 
   # Disallows
-  no-color-keywords: 2
   no-debug: 2
   no-duplicate-properties:
     - 2
