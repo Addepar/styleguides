@@ -1,6 +1,6 @@
 {
   "name": "@addepar/prettier-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Addepar's Prettier config",
   "main": "index.js",
   "license": "MIT",
