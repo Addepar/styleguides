@@ -9,7 +9,6 @@
   "dependencies": {
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-ember": "^5.0.1",
-    "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-prefer-let": "^1.0.1",
