@@ -7,13 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-ember": "^7.7.2",
     "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
-    "eslint-plugin-prettier": "^2.6.0"
+    "eslint-plugin-prettier": "^3.1.2"
   },
   "author": "",
   "repository": {
