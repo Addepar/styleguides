@@ -23,9 +23,17 @@ module.exports = {
       ],
       excludedFiles: [
         "app/**",
+        "packages/*/app/**",
+        "packages/@addepar/*/app/**",
         "addon/**",
+        "packages/*/addon/**",
+        "packages/@addepar/*/addon/**",
         "addon-test-support/**",
-        "tests/dummy/app/**"
+        "packages/*/addon-test-support/**",
+        "packages/@addepar/*/addon-test-support/**",
+        "tests/dummy/app/**",
+        "packages/*/tests/dummy/app/**",
+        "packages/@addepar/*/tests/dummy/app/**"
       ],
       parserOptions: {
         sourceType: "script",
