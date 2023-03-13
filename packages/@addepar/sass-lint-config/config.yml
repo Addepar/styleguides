@@ -2,12 +2,14 @@
 options:
   # Don't merge default rules
   merge-default-rules: false
+
 # File Options
 files:
   include:
     - 'styles/**/*.s+(a|c)ss'
     - 'app/styles/**/*.s+(a|c)ss'
     - 'addon/styles/**/*.s+(a|c)ss'
+
 # Rule Configuration
 rules:
   # Extends
