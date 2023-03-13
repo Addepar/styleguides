@@ -1,6 +1,6 @@
 {
   "name": "@addepar/sass-lint-config",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Addepar sass-lint configuration",
   "main": "index.js",
   "license": "MIT",
