@@ -23,7 +23,7 @@ Install the Ember-Toolbox and it will bootstrap your app or addon with all of th
 frontend linting and formatting configurations:
 
 ```bash
-  ember install @addepar/ember-toolbox
+ember install @addepar/ember-toolbox
 ```
 
 ## Editor Integration
