@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "lerna": "^2.10.2"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "npm": "10.5.1"
   }
 }
