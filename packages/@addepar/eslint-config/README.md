@@ -1,6 +1,6 @@
 # @addepar/eslint-config
 
-This ESLint plugin supports both Javascript and Ember.js linting.
+This ESLint plugin supports both JavaScript and Ember.js linting.
 
 Ember.js specific rules from [eslint-plugin-ember](https://github.com/ember-cli/eslint-plugin-ember).
 
