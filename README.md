@@ -12,6 +12,8 @@ npm i
 
 Note that these packages are largely published on the public NPM registry.
 
+To publish the latest version of each package with lerna:
+
 ```
-npx lerna publish
+npx lerna publish --otp SOME_OTP
 ```
